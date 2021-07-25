@@ -1,0 +1,150 @@
+.header{
+    width: 100%;
+    border-bottom: 2px solid rgb(238, 238, 238);
+    background-color: rgb(248, 248, 248);
+    padding: .5rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin: .5rem;
+    margin-bottom: .2rem;
+}
+
+input {
+    width: 96%;
+    height: 1.5rem;
+    margin: .5rem;
+    border: 1px solid rgb(242, 239, 239);
+    border-radius: .2rem;
+}
+
+input:focus{
+    outline-width: 0;
+    border: 2px solid rgb(204, 226, 252);
+}
+
+.container {
+    box-sizing: border-box;
+    width: 99%;
+    margin: 0;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.no-margin{
+    margin: 0;
+}
+
+.wrapper {
+    width: 47%;
+    margin: .2rem;
+}
+
+.container-start{
+    width: 99%;
+    margin: 0.2rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+button {
+    width: fit-content;
+    padding: .7rem;
+    margin: .5rem;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: .3rem;
+}
+
+button:hover{
+    box-shadow: 2px 2px 2px rgb(214, 214, 214);
+}
+
+button:disabled,
+button[disabled]{
+  background-color: #c2f5c9;
+}
+
+.delete {
+    color: ivory;
+    background-color: rgb(211, 41, 41);
+}
+
+.add{
+    color: ivory;
+    background-color: rgb(57, 70, 189);
+}
+
+.save{
+    color: ivory;
+    background-color: rgb(48, 145, 48);
+}
+
+.bottom-right{
+    float: right;
+}
+
+.select_container {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 100%;
+    border: 1px solid rgb(242, 239, 239);
+    border-radius: .3rem;
+}
+
+.select_container:hover{
+    border: 2px solid rgb(242, 239, 239);
+}
+
+.triangle_down {
+    position: relative;
+    top: 0.4rem;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 6px solid #555;
+}
+
+.footer{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    width: 30%;
+}
+
+.alert {
+    margin-left: .5rem;
+    color: brown;
+}
+
+.select_options{
+    width: 100%;
+}
+
+.option {
+    padding: .5rem;
+    margin: .03rem;
+    cursor: pointer;
+    border: 1px solid rgb(204, 226, 252);
+}
+
+@media only screen and (max-width: 600px) {
+    .wrapper{
+        box-sizing: border-box;
+        width: 90%;
+    }
+
+    .footer {
+        box-sizing: border-box;
+        width: 90%;
+    }
+  }

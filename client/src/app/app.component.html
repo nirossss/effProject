@@ -1,0 +1,77 @@
+<form [formGroup]="userProfileObj" (ngSubmit)="onSubmit()">
+
+    <div class="header">User Profile</div>
+
+    <div class="container">
+        <div class="wrapper">
+            <label for="name">Name</label>
+            <input formControlName="name" required id="name" type="text">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div class="alert" *ngIf="name.errors?.required">
+                    Name is required.
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <label for="organization">Organization</label>
+            <input formControlName="organization" id="organization" type="text">
+        </div>
+    </div>
+
+    <div class="header">Contact Information</div>
+
+    <div formArrayName="contacts" class="container-start">
+        <div *ngFor="let contact of contacts.controls; index as i" class="wrapper">
+            <div [formGroupName]="i">
+                <div class="container no-margin">
+                    <div class="wrapper">
+                        <label for="contact_type-{{ i }}">Type of Contact</label>
+                        <div *ngIf="isOptions[i] === 0" (click)="isOptions[i]=1" class="select_container"
+                            id="contact_type-{{ i }}">
+                            <div>{{contact.controls.communicationType.value}}</div>
+                            <div class="triangle_down"></div>
+                        </div>
+                        <div *ngIf="isOptions[i] === 1" class="select_options">
+                            <div #email (click)="contactTypeChange(i, email)" class="option">
+                                Email
+                            </div>
+                            <div #phone (click)="contactTypeChange(i, phone)" class="option">
+                                Phone Number
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <label for="contact_lable-{{ i }}">Contact Lable</label>
+                        <input formControlName="label" id="contact_lable-{{ i }}" type="text" required>
+                        <div
+                            *ngIf="contact.controls.label.invalid && (contact.controls.label.dirty || contact.controls.label.touched)">
+                            <div class="alert" *ngIf="contact.controls.label.errors?.required">
+                                Label is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="contact_emailOrPhoneText-{{ i }}">{{contact.controls.communicationType.value}}</label>
+                    <input formControlName="emailOrPhoneText" id="contact_emailOrPhoneText-{{ i }}" type="text"
+                        required>
+                    <div *ngIf="(contact.controls.emailOrPhoneText.dirty || contact.controls.emailOrPhoneText.touched)">
+                        <div class="alert"
+                            *ngIf="checkEmailOrPhoneText(contact.controls.emailOrPhoneText, contact.controls.communicationType.value)">
+                            Invalid {{contact.controls.communicationType.value}}
+                        </div>
+                        <div class="alert" *ngIf="contact.controls.emailOrPhoneText.errors?.required">
+                            {{contact.controls.communicationType.value}} is required.
+                        </div>
+                    </div>
+                </div>
+                <button class="delete bottom-right" type="button" (click)="deleteContact(i)">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="add" type="button" (click)="addContact()">Add Contact</button>
+        <button class="save" type="submit" [disabled]="!userProfileObj.valid">Save User Profile</button>
+    </div>
+</form>
